@@ -58,10 +58,10 @@ class MintPlotter:
     def plot_net_worth_over_yearly_spending(self):
         win_num = 12
         # local_mint_df = self.mint_df.copy(deep=True)
+        print(self.mint_df)
         rolling_mint_df = self.mint_df.loc[:, ['Spending']] \
             .rolling(window=win_num).sum()
         print(rolling_mint_df)
-        print(len(self.mint_df.loc[win_num:, 'NET']))
         rolling_mint_df['NET'] = self.mint_df.loc[win_num:, 'NET']
         rolling_mint_df['DATES'] = self.mint_df.loc[win_num:, 'DATES']
 
@@ -70,6 +70,8 @@ class MintPlotter:
 
         rolling_mint_df['FI'] = 25
         
+        print(rolling_mint_df)
+
         rolling_mint_df.dropna(axis='index', how='any', inplace=True)
 
         print(rolling_mint_df)
